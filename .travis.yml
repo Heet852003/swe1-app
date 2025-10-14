@@ -1,0 +1,38 @@
+language: python
+dist: focal    # Ubuntu 20.04 (stable Travis CI environment)
+
+python:
+  - "3.11"
+
+cache: pip
+
+# 🧪 Install dependencies (normal + dev)
+install:
+  - pip install -r requirements.txt
+  - pip install -r requirements-dev.txt
+
+# ⚙️ Before tests: prepare database + static files
+before_script:
+  - python manage.py migrate --noinput
+  - python manage.py collectstatic --noinput
+
+# ✅ What Travis will run for each build
+script:
+  - black --check .
+  - flake8 .
+  - coverage run --source=mysite,polls manage.py test
+
+# 📊 After tests: send coverage to Coveralls
+after_success:
+  - coveralls
+
+# 🚀 Deploy to AWS Elastic Beanstalk **only when main branch passes all tests**
+deploy:
+  provider: elasticbeanstalk
+  edge: true             # Use dpl v2 (recommended)
+  region: "us-east-1"    # ✅ change if your EB is in another region
+  app: "swe1-app"        # ✅ your EB Application name
+  env: "swe1-env"        # ✅ your EB Environment name
+  bucket: "	elasticbeanstalk-us-east-1-817896957697"  # ✅ your S3 bucket name
+  on:
+    branch: main
