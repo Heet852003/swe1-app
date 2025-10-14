@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-7xw$e)rcg1thh%ma7jz!rp#$_*te_@q&nz8voltr3p$yu^p@21
 DEBUG = True
 
 ALLOWED_HOSTS = ["*", ".elasticbeanstalk.com"]
+# Allow Django to accept POSTs (e.g., admin) from our EB domain
+CSRF_TRUSTED_ORIGINS = ["https://*.elasticbeanstalk.com"]
 
 
 # Application definition
@@ -117,6 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# Where 'collectstatic' will put compiled static files (needed for CI/EB)
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
