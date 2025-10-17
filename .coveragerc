@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = mysite, polls
+relative_files = True
+
+[report]
+show_missing = True
