@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
 
+
 class SmokeTests(TestCase):
     def test_index_loads(self):
         client = Client()
