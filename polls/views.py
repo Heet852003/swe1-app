@@ -1,13 +1,16 @@
-from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
-from .models import Question, Choice
+
+from .models import Choice, Question
 
 
 def index(request):
     latest_question_list = Question.objects.order_by("-pub_date")[:5]
     return render(
-        request, "polls/index.html", {"latest_question_list": latest_question_list}
+        request,
+        "polls/index.html",
+        {"latest_question_list": latest_question_list},
     )
 
 
