@@ -24,7 +24,7 @@ script:
 
 # 📊 Upload coverage report
 after_success:
-  - covdecov
+  - coveralls
 
 # 🚀 Deploy to AWS Elastic Beanstalk (only when tests pass on main)
 deploy:
