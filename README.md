@@ -1,7 +1,8 @@
 # 🗳️ SWE1 Django Polls App
 
 [![Build Status](https://app.travis-ci.com/Heet852003/swe1-app.svg?branch=main)](https://app.travis-ci.com/github/Heet852003/swe1-app)
-[![Coverage Status](https://coveralls.io/repos/github/Heet852003/swe1-app/badge.svg?branch=main)](https://coveralls.io/github/Heet852003/swe1-app?branch=main)
+[![codecov](https://codecov.io/gh/USERNAME/REPO/branch/main/graph/badge.svg)](https://codecov.io/gh/USERNAME/REPO)
+
 
 A simple polling web application built with **Django** as part of the SWE1 assignment.
 
@@ -18,4 +19,5 @@ A simple polling web application built with **Django** as part of the SWE1 assig
 - **Flake8** – Linting  
 - **Coverage.py + Coveralls** – Code coverage  
 - **Travis CI** – Automated build, test, and deployment
+
 
